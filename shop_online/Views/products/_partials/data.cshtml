@@ -1,0 +1,18 @@
+﻿@using shop_online.Models.ViewModels
+@model List<productsViewModel>
+
+@foreach (productsViewModel p in Model)
+{
+    <tr>
+        <td>@p.name</td>
+        <td>$ @p.price</td>
+        <td>@p.description</td>        
+        <td>@*@{Html.RenderAction("getCategorie", "products", new { id = p.id_categoria });}*@</td>
+        <td>@*@{Html.RenderAction("render/action/", new { id = p.id_categoria });}*@</td>
+        <td>
+            @Html.ActionLink("Editar", "edit", "products", new { id = p.id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Eliminar", "delete", "products", new { id = p.id }, new { @onclick = "eliminar('" + @p.id + "')", @class = "btn btn-danger", @id = p.id })
+        </td>
+
+    </tr>
+}

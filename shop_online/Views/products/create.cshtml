@@ -1,0 +1,55 @@
+﻿@using shop_online.Models
+@using shop_online.Models.utils
+@using shop_online.Models.ViewModels
+
+@model productsModel
+
+@{
+    ViewBag.Title = "create";    
+}
+
+<h3> @ViewBag.Title</h3>
+
+@using (Html.BeginForm("create", "products", FormMethod.Post))
+{
+    <div class="row mt-15">
+        <div class="col-md-12">
+            <div class="mb-5">
+                @Html.LabelFor(d => d.name)
+                @Html.TextBoxFor(d => d.name, "", new { @class = "form-control", @id = "name" })
+                @Html.ValidationMessageFor(d => d.name, null, new { @class = "text-danger" })
+            </div>
+            
+            <div class="mb-5">
+                @Html.LabelFor(d => d.price)
+                @Html.TextBoxFor(d => d.price, "", new { @class = "form-control", @id = "price" })
+                @Html.ValidationMessageFor(d => d.price, null, new { @class = "text-danger" })
+            </div>
+            
+            <div class="mb-5">
+                @Html.LabelFor(d => d.description)
+                @Html.TextBoxFor(d => d.description, "", new { @class = "form-control", @id = "description" })
+                @Html.ValidationMessageFor(d => d.description, null, new { @class = "text-danger" })
+            </div>
+            
+            <div style="margin-buttom: 15px; margin-top: 15px;">
+                @Html.LabelFor(d => d.id_categoria)
+                @Html.DropDownList("id_categoria", (List<SelectListItem>)ViewBag.items, "Seleccione una opcion", new { @class = "form-control"})
+                @Html.ValidationMessageFor(d => d.id_categoria, null, new { @class = "text-danger" })
+            </div>
+               
+            <div style="text-align:left;" class="mt-15">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+        alert("hola xd");
+    </script>
+}
+
+
+
